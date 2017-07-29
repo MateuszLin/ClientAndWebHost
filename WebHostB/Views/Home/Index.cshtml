@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Waiting for messages : </h2>
+
+<script type="text/javascript">
+        var time = 1000;
+        setInterval(
+            function () {
+                $.ajax(
+                    {
+                        url: '/Home/GetMessage',
+                        type: "POST",
+                        success: function (result) {
+                            document.getElementById("messageDiv").innerHTML = '<h3>' + result + '</h3>';
+                        }
+                    })
+            }, time);
+</script>
+
+<div id="messageDiv"></div>
+
+
